@@ -1,15 +1,25 @@
 <script setup>
-import JSON from './components/JSON.vue'
-import Form from './components/Form.vue';
+import JSONLab from './components/JSONLab.vue'
+import BHeader from './components/BHeader.vue'
+import LibraryRegistrationForm from './components/LibraryRegistrationForm.vue'
 </script>
 
 <template>
-  <!--JSON /> -->
-  <Form />
+  <div class="main-container">
+    <header>
+      <BHeader />
+    </header>
+
+    <main class="main-box">
+      <!--LibraryRegistrationForm /> -->
+      <!-- <JSONLab /> -->
+      <router-view></router-view>
+    </main>
+  </div>
 </template>
 
 <style scoped>
-header {
+/* header {
   line-height: 1.5;
 }
 
@@ -34,5 +44,5 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
-}
+} */
 </style>
