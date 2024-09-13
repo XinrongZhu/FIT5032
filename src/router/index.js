@@ -6,6 +6,8 @@ import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
 import { useAuth } from '../router/authenticated'
 import LogoutView from '../views/LogoutView.vue'; 
+import AddBookView from '../views/AddBookView.vue';
+import BookListView from '../views/BookListView.vue'; 
 const { isAuthenticated } = useAuth()
 
 const routes = [
@@ -18,6 +20,16 @@ const routes = [
     path: '/about',
     name: 'About',
     component: AboutView,
+  },
+  {
+    path: '/addbook',
+    name: 'AddBook',
+    component: AddBookView,
+  },
+  {
+    path: '/booklist',
+    name: 'BookList',
+    component: BookListView,
   },
   {
     path: '/login',
