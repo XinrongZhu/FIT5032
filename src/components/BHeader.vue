@@ -1,13 +1,23 @@
 <script setup>
 import {useAuth} from '../router/authenticated'
 import router from '../router'
+import { getAuth, signOut } from "firebase/auth"; 
 
 const {isAuthenticated} = useAuth()
 
+const auth = getAuth();
+
 const logout = () => {
-  isAuthenticated.value = false
-  router.push({name: 'Home'})
-}
+  signOut(auth)
+    .then(() => {
+      console.log("User logged out successfully.");
+      isAuthenticated.value = false; 
+      router.push({ name: 'Logout' }); 
+    })
+    .catch((error) => {
+      console.error("Error logging out: ", error);
+    });
+};
 </script>
 
 <template>
@@ -24,11 +34,17 @@ const logout = () => {
         <li class="nav-item">
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="!isAuthenticated">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
         <li class="nav-item">
-          <button class="nav-link" active-class="active" @click="logout">Logout</button>
+          <router-link to="/Firelogin" class="nav-link" active-class="active">Firebase Login</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/FireRegister" class="nav-link" active-class="active">Firebase Register</router-link>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" @click="logout">Logout</button>
         </li>
       </ul>
     </header>
